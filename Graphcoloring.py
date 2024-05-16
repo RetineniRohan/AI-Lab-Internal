@@ -3,14 +3,12 @@ class Graph:
         self.V = vertices
         self.graph = [[0 for _ in range(vertices)] for _ in range(vertices)]
 
-    # Function to check if the current color assignment is safe for vertex v
     def is_safe(self, v, colour, c):
         for i in range(self.V):
             if self.graph[v][i] == 1 and colour[i] == c:
                 return False
         return True
 
-    # Recursive function to solve graph coloring problem
     def graph_colour_util(self, m, colour, v):
         if v == self.V:
             return True
@@ -22,7 +20,6 @@ class Graph:
                     return True
                 colour[v] = 0
 
-    # Main function to solve graph coloring problem
     def graph_colouring(self, m):
         colour = [0] * self.V
         if not self.graph_colour_util(m, colour, 0):
@@ -35,7 +32,6 @@ class Graph:
 
         return True
 
-# Example usage:
 g = Graph(4)
 g.graph = [[0, 1, 1, 1],
            [1, 0, 1, 0],
